@@ -1,10 +1,13 @@
 import express from "express";
 import bodyParser from "body-parser";
 import axios from "axios";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
-const port = 3000;
-const API_URL = "http://localhost:4000";
+const PORT = process.env.PORT;
+const API_URL = process.env.API_URL;
 
 app.use(express.static("public"));
 
@@ -77,6 +80,6 @@ app.get("/api/posts/delete/:id", async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Backend server is running on http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`Backend server is running on http://localhost:${PORT}`);
 });

@@ -1,8 +1,11 @@
 import express from "express";
 import bodyParser from "body-parser";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
-const port = 4000;
+const PORT = process.env.PORT;
 
 // In-memory data store
 let posts = [
@@ -90,6 +93,6 @@ app.delete("/posts/:id", (req, res) => {
   res.json({ message: "Post deleted" });
 });
 
-app.listen(port, () => {
-  console.log(`API is running at http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`API is running at http://localhost:${PORT}`);
 });
